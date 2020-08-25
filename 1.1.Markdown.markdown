@@ -1,0 +1,18 @@
+\#User stories
+
+1.  \*\*As a\*\* student \*\*I want to\*\* see my progress during the
+    exam, \*\*so that\*\* I can manage my time accordingly.
+
+2.  \*\*As a \*\* student \*\*I want to\*\* see my results after taking
+    an exam, \*\*so that\*\* I can improve my knowledge on the questions
+    I got wrong.
+
+3.  \*\*As a\*\* student \*\*I want to\*\* I want to make a profile,
+    \*\*so that\*\* I can access the exams for my courses.
+
+4.  \*\*As an\*\* admin \*\*I want to\*\* I want to be able to send the
+    exam to all student who has passed the course, \*\*so that\*\* they
+    can take their final exam
+
+5.  \*\*As an\*\* admin \*\*I want to\*\* I want to use a pre-made form,
+    \*\*so that\*\* I can easily fill in questions and answers
