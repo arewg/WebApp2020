@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="help/index.css" media="screen"/>
+    <script src="help/index.js"></script>
 </head>
 <body>
     <header id="header">
-        <h1 id="header-title">HIOF</h1>
+        <h1 id="hiof-logo">HIOF</h1>
         <h2 id="user">User</h2>
     </header>
-    <main id="main">
-        <section class="new-todo"></section>
+    <main>
+        <section class="new-todo">
             <!--button kan ha value="" og name=""-->
-            <button id="new-todo-button">New Todo</button> 
+            <button id="new-todo-button">New Todo</button>
+        </section> 
         <section class="active-todo">
             <ul id="todo-list">
                 <li class="todo-list-item">
@@ -39,16 +42,40 @@
 
         <section class="completed-todo">
             <h3 id="completed-todo-header">Completed Todos</h3>
-            <input type="radio" id="completed-todo-radio-button" value="false">
-            <label for="completed-todo-radio-button">Sort By Date</label>
-            <table id="completed-table">
+            <input type="checkbox" id="completed-todo-checkbox">Sort By Date</input>
+            <table id="completed-todos-table">
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Description</th>
                     <th>Completed Date</th>
                 </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
             </table>
+
         </section>
     </main>
 </body>
