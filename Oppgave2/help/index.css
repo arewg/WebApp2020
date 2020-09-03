@@ -46,14 +46,17 @@ ul {
 
 .todo-list-delete-button {
     background-color: #ef3340;
+    border-radius: 5px;
     color: white;
     border: none;
     padding: 0.2rem;
     width: 4vw;
+    margin-left: 20%;
 }
 
 .todo-list-complete-button {
     background-color: #56d4c1;
+    border-radius: 5px;
     color: white;
     border: none;
     padding: 0.2rem;
@@ -74,11 +77,12 @@ li {
     margin-bottom: 60px;
 }
 
-.new-todo .new-todo-button {
+.new-todo #new-todo-button {
     margin-top: 80px;
     padding: 10px;
     width: 200px;
     font-size: 30px;
+    color: blka;
     background-color: white;
     border-width: 1px;
     border: 1px solid #333333;
@@ -170,7 +174,7 @@ th {
       
   }
 
-  #new-todo-button {
+  #submit {
     color: #FFFFFF;
     top: 498px;
     left: 556px;
