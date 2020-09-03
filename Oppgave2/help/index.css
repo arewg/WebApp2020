@@ -117,11 +117,9 @@ th {
     border-bottom: 2px solid rgba(179,179,179, 0.4);
 }
 
-#complete-todo-checkbox {
-   float: right;
+#completed-todos-checkbox {
+    float: right;
 }
-
-
 
 
 /* MODAL SECTION */
