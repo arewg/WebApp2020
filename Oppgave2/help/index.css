@@ -82,7 +82,7 @@ li {
     padding: 10px;
     width: 200px;
     font-size: 30px;
-    color: blka;
+    color: black;
     background-color: white;
     border-width: 1px;
     border: 1px solid #333333;
@@ -174,7 +174,7 @@ th {
       
   }
 
-  #submit {
+  #create-button {
     color: #FFFFFF;
     top: 498px;
     left: 556px;

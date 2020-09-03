@@ -6,7 +6,7 @@ function oppstart() {
 
   var span = document.getElementsByClassName("close")[0];
   // Get the button that opens the modal
-  var todoButton = document.getElementById("main-todo-button-id");
+  var todoButton = document.getElementById("new-todo-button");
 
 
   todoButton.onclick = function () {
@@ -24,11 +24,9 @@ function oppstart() {
       modal.style.display = "none";
     }
   }
-
-
 }
 
-const wrapper = document.getElementById("wrapper");
+const wrapper = document.getElementById("todo-list");
 const description = "";
 const listDesctiption = description.split(" ");
 const types = ["p", "div", "li"];

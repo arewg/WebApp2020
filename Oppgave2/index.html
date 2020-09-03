@@ -14,6 +14,28 @@
     </header>
     <main>
         <section class="new-todo">
+            <div id="my-modal" class="modal">
+                <div class="modal-content">
+                    <form>
+                        <div class="new-todo-title-div">
+                            <label>New todo</label>
+                            <span class="close">&times;</span>
+                        </div>
+                        <div class="input-wrapper">
+                            
+                                <label>Title</label>
+                                <input type="text" id="new_title" class="new-title">
+                            
+                                <label>Description</label>
+                                <input type="text" class="new-description">
+                        
+                                <label>Author</label>
+                                <input type="text" class="new-author">
+                                <button id="create-button" class="create-button" type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <!--button kan ha value="" og name=""-->
             <button id="new-todo-button" class="new-todo-button-class">+ Todo </button>
         </section> 
