@@ -54,6 +54,10 @@ ul {
     margin-left: 20%;
 }
 
+.todo-list-complete-button:hover, .todo-list-delete-button:hover{
+    opacity: 70%;
+}
+
 .todo-list-complete-button {
     background-color: #56d4c1;
     border-radius: 5px;
@@ -194,14 +198,14 @@ th {
       border-bottom: 2px solid #F6F6F6;
   }
 
-.close {
+#close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
   
-  .close:hover, .close:focus {
+  #close:hover, #close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
