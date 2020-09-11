@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./index.css" media="screen"/>
+    <script src="bundle.js"></script>
+</head>
+
+
+<body>
+    <header id="header">
+        <h1 id="hiof-logo">HIOF</h1>
+        <h2 id="user">User</h2>
+    </header>
+
+
+    <main>
+
+        <!--NY TODO OG POP-UP-VINDU-->
+        <section class="new-todo">
+            <div id="my-modal" class="modal">
+                <div class="modal-content">
+                    <form>
+                        <div class="new-todo-title-div">
+                            <label>New todo</label>
+                            <span id="close">&times;</span>
+                        </div>
+                        <div class="input-wrapper">
+                            
+                                <label>Title</label>
+                                <input type="text" id="new-title" class="new-title">
+                            
+                                <label>Description</label>
+                                <input type="text" id="new-description" class="new-description">
+                        
+                                <label>Author</label>
+                                <input type="text" id="new-author" class="new-author">
+                                <button id="create-button" class="create-button" onclick="return false">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <button id="new-todo-button" class="new-todo-button-class">+ Todo </button>
+        </section> 
+
+        <!--DE AKTIVE TODO-ENE-->
+        <section class="active-todo">
+            <ul id="todo-list">
+                <li class="todo-list-item">
+                    <h2 class="todo-list-title">Todo 1</h2>
+                    <p class="todo-list-description">Description of todo task 1</p>
+                    <p class="todo-list-author">Author</p>
+                    <button class="todo-list-delete-button" name="Delete">Delete</button>
+                    <button class="todo-list-complete-button" name="Complete">Complete</button>
+                </li>
+            
+                <li class="todo-list-item">
+                    <h2 class="todo-list-title">Todo 2</h2>
+                    <p class="todo-list-description">Description of todo task 2</p>
+                    <p class="todo-list-author">Author</p>
+                    <button class="todo-list-delete-button" name="Delete">Delete</button>
+                    <button class="todo-list-complete-button" name="Complete">Complete</button>
+                </li>
+                <li class="todo-list-item">
+                    <h2 class="todo-list-title">Todo 3</h2>
+                    <p class="todo-list-description">Description of todo task 3</p>
+                    <p class="todo-list-author">Author</p>
+                    <button class="todo-list-delete-button" name="Delete">Delete</button>
+                    <button class="todo-list-complete-button" name="Complete">Complete</button>
+                </li>
+            </ul>
+        </section>
+
+        <!--DE FERDIGSTILTE TODO-ENE-->
+        <section class="completed-todo">
+            <h3 id="completed-todos-title">Completed todos</h3>
+            <div id="completed-todos-checkbox">
+                <input type="checkbox">Filter by date</input>
+            </div>
+            <table id="completed-todos-table">
+                <tr class="normal-table-row">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Description</th>
+                    <th>Completed Date</th>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+                <tr class="normal-table-row">
+                    <td>Todotitle</td>
+                    <td>Author Author</td>
+                    <td>Im a baby siracha hot chicken mixtape pabst organic air ...</td>
+                    <td>22.12.20</td>
+                </tr>
+            </table>
+
+        </section>
+    </main>
+</body>
+</html>
