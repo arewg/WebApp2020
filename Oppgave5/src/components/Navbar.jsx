@@ -2,7 +2,6 @@ import React from 'react';
 import Title from './Title';
 
 const Navbar = ({ title }) => (
-    
 
         <header>
            <Title title={title}/>  
@@ -11,7 +10,6 @@ const Navbar = ({ title }) => (
             </nav>
         </header>
 
-   
     );
 
 export default Navbar;

@@ -1,11 +1,17 @@
 import React from 'react';
-import CompletedList from './CompletedList';
 
-const CompletedListItem = ({ id, title, name, description, author }) => (
+const newDate = new Date()
+const day = newDate.getDate();
+const month = newDate.getUTCMonth()+1;
+
+const date = day+"/" +month;
+
+const CompletedListItem = ({title, description, author }) => (
     <tr>
       <th>{title}</th>
       <th>{description}</th>
       <th>{author}</th>
+      <th>{date}</th>
     </tr>
 );
 

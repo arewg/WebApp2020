@@ -3,11 +3,6 @@ import TodoCard from './TodoCard';
 
 const TodoCardList = ({list}) => (
 
-
-  list ? (
-    list.map((list) => <TodoCard key={list.id} {...list} />)
-  ) : (
-    <p>Listen er tom</p>
-));
+  list.map((list) => <TodoCard key={list.id} {...list} />));
 
 export default TodoCardList;

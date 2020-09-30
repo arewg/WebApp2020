@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoButton = () => (
-<button id="new-todo-button" classfor="new-todo-button-class">+ Todo </button>
+const TodoButton = ({knapp}) => (
+<button type="button" onClick={knapp}>+ Todo </button>
 );
 export default TodoButton;

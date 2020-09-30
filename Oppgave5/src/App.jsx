@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Search from './components/Search';
 import CompletedList from './components/CompletedList';
 import Navbar from './components/Navbar';
-import TodoCard from './components/TodoCard';
 import TodoCardList from './components/TodoCardList';
 import Modal from './components/Modal';
 import TodoButton from './components/TodoButton';
@@ -12,8 +11,6 @@ const myList = [
     { id: 1, title: "Gjøre Webapplikasjoner", description: "Fikse React for første gang.", author: "Are"  },
     { id: 2, title: "Lage middag", description: "Kan ikke bare sitte stille, må spise og!", author: "Are" }
 ];
-
-const tomListe = [];
 
 const App = () => {
     
@@ -26,23 +23,31 @@ const App = () => {
     console.log(e.target.value);
   };
 
+    const [state, setState] = useState(false);
+    const showModal = () => {
+      setState(true);
+  };
+  
+    const closeModal =() => {
+        setState(false);
+    };
+
     return (
     <>
         <Navbar title={title} />
         <main>
-
             {/**
              * Section for New Todo Button
              */}
 
-             <TodoButton />
+             <TodoButton knapp={showModal}/>
 
             {/**
              * Section for Active Todo Cards
              */}
 
             <section>
-                <TodoCardList list={myList} />
+                {myList.length > 0 ? (<ul><TodoCardList list={myList} /></ul>) : (<p>TOMT</p>)}
             </section>
             
             {/**
@@ -61,6 +66,7 @@ const App = () => {
                         <th>Title</th>
                         <th>Description</th>
                         <th>Author</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,10 +78,7 @@ const App = () => {
              * Section for pop-up modal window
              */}
 
-            <section>
-                <Modal />
-            </section>
-
+            <Modal state={state} close={closeModal} />
         </main>
     </>
     );
