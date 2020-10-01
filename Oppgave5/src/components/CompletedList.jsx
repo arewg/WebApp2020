@@ -19,8 +19,7 @@ const CompletedList = ({ completed}) => {
   <>
   <pre>{JSON.stringify(result)}</pre>
   <Search addResult={addResult} />
-  <p>Search result <br />
-  Title {result.title}</p>
+  <p>Search result<br />{result && result.map((result) => <p>Title: {result.title} Description: {result.description} Author: {result.author}</p>)}</p>
   <table className="completedTodoTable" >
                 <thead>
                     <tr>
