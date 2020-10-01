@@ -1,0 +1,47 @@
+.todoCardItem {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 8px 16px #5DD3D829;
+    border-radius: 8px;
+    opacity: 1;
+    height: 95%;
+    margin: 5% 0% 5% 1%;
+    width: 400px;
+
+    button {
+        float: right;
+        color: white;
+        margin-bottom: 20px;
+        border: 0;
+        height: 30px;
+    }
+
+    button:hover {
+        color: black;
+    }
+
+    h2{
+        margin-left: 20px;
+    }
+
+    .todoDescription {
+        margin-left: 20px;
+    }
+
+    .todoAuthor{
+        display: none;
+    }
+
+    .todoDelete{
+        background: #EF3340 0% 0% no-repeat padding-box;
+        border-radius: 5px;        
+        margin-right: 3px;
+    }
+
+    .todoComplete{
+        background: #56D4C2 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        margin-right: 20px;
+       
+    }
+}
+

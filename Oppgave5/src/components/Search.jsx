@@ -13,15 +13,12 @@ const Search = ({ addResult }) => {
   }
 
   return (
-  <>
-      <label>Søk: </label>
-      <input
-        type="text"
-        placeholder="Tittel"
-        onChange={changing}
-      />
-      <button type="button" onClick={handleChange}>Search</button>
-      </>
+    <>
+      <div id="searchArea" >
+        <input type="text" placeholder="SEARCH BY TITLE" onChange={changing}/>
+        <button type="button" onClick={handleChange}>SEARCH</button>
+      </div>
+    </>    
   );
 };
 

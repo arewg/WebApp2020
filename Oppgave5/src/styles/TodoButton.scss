@@ -1,0 +1,19 @@
+#todoButton {
+    margin: 0 auto;
+    width: 70%;
+    padding-left: 45px;
+ 
+    button {
+        margin-top: 80px;
+        padding: 10px;
+        width: 200px;
+        font-size: 30px;
+        background-color: white;
+        border-width: 1px;
+        border: 1px solid #333333;
+    }
+    button:hover {
+        background-color: rgb(233, 233, 233);
+    }
+}
+

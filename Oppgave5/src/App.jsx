@@ -11,6 +11,11 @@ import './App.scss';
 
 const App = () => {
     
+    const myList = [ 
+        { id: 1, title: "Gjøre Webapplikasjoner", description: "Fikse React for første gang.", author: "Are"  },
+        { id: 2, title: "Lage middag", description: "Kan ikke bare sitte stille, må spise og!", author: "Are" }
+    ];
+
     const titleOfPage = 'HIOF';
     const [todo, setTodo] = useState([]);
     const [completed, setCompleted] = useState([]);
@@ -60,9 +65,9 @@ const App = () => {
 
     return (
     <>
-        <Navbar />
+        
         <main>
-            <pre>{JSON.stringify(todo)}</pre>
+        <Navbar />
             {/**
              * Section for New Todo Button
              */}
@@ -73,8 +78,8 @@ const App = () => {
              * Section for Active Todo Cards
              */}
 
-            <section>
-                {todo && todo.length > 0 ? (<ul><TodoCardList todo={todo} removeTodo={removeTodo} addCompleted={addCompleted} /></ul>) : (<p>Jippi! Ingen todos idag</p>)}
+            <section id="todoSection">
+                {todo && todo.length > 0 ? (<div className="todoCard"><TodoCardList todo={todo} removeTodo={removeTodo} addCompleted={addCompleted} /></div>) : (<p id="jippi">😀 INGEN TODOS! </p>)}
             </section>
             
             {/**

@@ -10,17 +10,22 @@ const CompletedList = ({ completed}) => {
   
   const addResult = (search) => {
     
-    const newResult = completed.filter((dum) => dum.title === search);
+    const newResult = completed.filter((dum) => dum.title.toLowerCase() === search.toLowerCase());
     setResult(newResult);
-    console.log("addresult  " + JSON.stringify(newResult));
 };
 
   return(
   <>
-  <pre>{JSON.stringify(result)}</pre>
-  <Search addResult={addResult} />
-  <p>Search result<br />{result && result.map((result) => <p>Title: {result.title} Description: {result.description} Author: {result.author}</p>)}</p>
-  <table className="completedTodoTable" >
+  
+  {completed.length > 0 && (<><Search addResult={addResult} />
+  
+  <div id="searchResult">
+    <p>Search Result<br />
+    {result && result.map((result) => 
+    <p><b>Title: </b>{result.title} <b>Description:</b> {result.description} <b>Author: </b>{result.author}</p>)}</p>
+  </div></>)}
+  
+  <table id="completedTodoTable" >
                 <thead>
                     <tr>
                         <th>Title</th>

@@ -7,8 +7,11 @@ return (
 modal ? (
     <section className="modal">
         <form onSubmit={handleSubmit}>
-            <label>New Todo</label>
-                <div>
+            <header id="modalHeader">
+                <label id="modalTitle">New Todo</label>
+                <a className="close" onClick={close}></a>
+            </header>
+                <div id="modalForm">
                     <label>Title</label>
                     <input type="text" name="title"  onChange={handleTitle} />
                     <label>Description</label>
@@ -18,7 +21,7 @@ modal ? (
                     <button type="submit" >Create</button>
                 </div>
         </form>
-        <button type="button" onClick={close}>Close</button>
+        
     </section>
 ) : (null));};
 

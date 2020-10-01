@@ -3,9 +3,9 @@ import Title from './Title';
 
 const Navbar = () => (
 
-        <header>
-           <Title />  
-            <nav>
+        <header id="headerNavBar">
+            <nav className="navBar"> 
+                <Title /> 
                 <h2>User User</h2>
             </nav>
         </header>
