@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 
-const Search = ({ search, handleSearch }) => {
+const Search = ({ addResult }) => {
 
-  const handleChange = (event) => {
-      handleSearch(event);
-      console.log("Inni handleChange");
+  const [search, setSearch] = useState('');
+  const handleChange = () => {
+      addResult(search); 
+     
+  }
+
+  const changing = (e) => {
+    setSearch(e.target.value)
   }
 
   return (
-    <form id="search">
-      <label htmlFor="search">Søk: </label>
+  <>
+      <label>Søk: </label>
       <input
         type="text"
-        id="search"
-        placeholder="Todo: Tittel"
-        onChange={handleChange}
-        value={search}
+        placeholder="Tittel"
+        onChange={changing}
       />
-    </form>
+      <button type="button" onClick={handleChange}>Search</button>
+      </>
   );
 };
+
 export default Search;

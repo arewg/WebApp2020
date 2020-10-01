@@ -6,8 +6,8 @@ const month = newDate.getUTCMonth()+1;
 
 const date = day+"/" +month;
 
-const CompletedListItem = ({title, description, author }) => (
-    <tr>
+const CompletedListItem = ({id, title, description, author }) => (
+    <tr key={id}>
       <th>{title}</th>
       <th>{description}</th>
       <th>{author}</th>

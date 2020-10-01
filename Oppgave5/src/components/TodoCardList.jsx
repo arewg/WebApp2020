@@ -1,8 +1,8 @@
 import React from 'react';
 import TodoCard from './TodoCard';
 
-const TodoCardList = ({list}) => (
+const TodoCardList = ({todo, removeTodo, addCompleted}) => (
 
-  list.map((list) => <TodoCard key={list.id} {...list} />));
+  todo.map((todo) => <TodoCard {...todo} key={todo.id} removeTodo={removeTodo} addCompleted={addCompleted} />));
 
 export default TodoCardList;

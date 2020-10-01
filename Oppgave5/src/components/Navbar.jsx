@@ -1,10 +1,10 @@
 import React from 'react';
 import Title from './Title';
 
-const Navbar = ({ title }) => (
+const Navbar = () => (
 
         <header>
-           <Title title={title}/>  
+           <Title />  
             <nav>
                 <h2>User User</h2>
             </nav>

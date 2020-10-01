@@ -1,14 +1,14 @@
 import React from 'react';
 
-const TodoCard = ({id, title, description, author}) => (
+const TodoCard = ({id, title, description, author, removeTodo, addCompleted}) => (
     <li>
-      <h2 className="todo-list-title">{title}</h2>
-      <p className="todo-list-description">{description}</p>
-      <p className="todo-list-author">{author}</p>
-      <button type="button" className="todo-list-delete-button" name="Delete">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <p>{author}</p>
+      <button type="button" onClick={() => removeTodo(id)} >
         Delete
       </button>
-      <button type="button" className="todo-list-complete-button" name="Complete">
+      <button type="button" onClick={() => addCompleted(id)}>
         Complete
       </button>
     </li>
