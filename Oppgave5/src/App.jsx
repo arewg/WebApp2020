@@ -26,7 +26,12 @@ const App = () => {
 
 
     const showModal = () => {setModal(true);};
-    const closeModal =() => {setModal(false);};
+    const closeModal =() => {
+        setModal(false);
+        setTitle('');
+        setDescription('');
+        setAuthor('');
+    };
 
     const addTodo = () => {
         setTodo([{id: guidGenerator(), title: title, description: description, author: author}, ...todo]);
