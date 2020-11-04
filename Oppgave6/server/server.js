@@ -4,12 +4,15 @@ import {PORT} from './constants/index.js';
 import 'dotenv/config.js';
 
 import connectDatabase from './config/db.js';
+import poll from './routes/poll.js'
+
+
 
 const app = express();
+        //       localhost:5000/polls
+app.use(`${process.env.BASEURL}polls`, poll)
 
 connectDatabase();
-
-
 
 const server = app.listen(
     PORT,
