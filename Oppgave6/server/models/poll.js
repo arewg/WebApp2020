@@ -3,7 +3,7 @@ import slugify from 'slugify';
 
 const {Schema} = mongoose;
 
-const CreatePollSchema = new Schema(
+const PollSchema = new Schema(
     {
         question: {
             type: String,
@@ -18,13 +18,13 @@ const CreatePollSchema = new Schema(
             requred: true,
         }
     },
-    { timestamps: true }
+    { timestamps: true, toJSON: { virtuals: true}, toObject: { virtuals: true} }
 );
 
-CreatePollSchema.pre('save', function (next) {
+PollSchema.pre('save', function (next) {
     this.slug = slugify.apply(this.name, { lower: true });
     next();
 });
 
 
-export default mongoose.model('CreatePoll', CreatePollSchema);
+export default mongoose.model('Poll', PollSchema);
