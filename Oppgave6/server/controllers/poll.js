@@ -1,4 +1,6 @@
-
+import { pollService } from '../services/index.js';
+import catchAsyncErrors from '../middleware/catchAsync.js';
+import ErrorHandler from '../utils/errorHandler.js';
 
 
 export const get = async (req, res, next) => {
@@ -11,14 +13,14 @@ export const get = async (req, res, next) => {
 };
 
 
-export const list = (req, res, next) => {
+export const list = async (req, res, next) => {
     const result = await pollService.listPolls();
     console.log('Test fra /controller/poll.js/list - funker ved localhost:5000/polls')
     res.status(200).json({ ...result });
 };
 
 
-export const create = (req, res, next) => {
+export const create = async (req, res, next) => {
 
     try {
         const poll = await pollService.createPoll(req.body);
