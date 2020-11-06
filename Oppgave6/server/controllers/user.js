@@ -4,8 +4,9 @@ import catchAsyncErrors from '../middleware/catchAsync.js';
 
 export const create = catchAsyncErrors(async (req, res, next) => {
     console.log('Jeg er inne i create i controllers/user.js');
+    console.log(req.body);
     const user = await userService.createUser(req.body);
-  res.status(201).json(user);
+    res.status(201).json(user);
 });
 
 export const listPolls = catchAsyncErrors(async (req, res, next) => {
