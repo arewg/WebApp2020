@@ -16,21 +16,22 @@ export const get = async (req, res, next) => {
 export const list = async (req, res, next) => {
     const result = await pollService.listPolls();
     console.log('Test fra /controller/poll.js/list - funker ved localhost:5000/polls')
-    res.status(200).json({ ...result });
+    res.status(200).json({result});
 };
 
 
 export const create = async (req, res, next) => {
 
     try {
+        console.log("Request Body i /controllers/poll.js/createmetode");
+        console.log(req.body);
         const poll = await pollService.createPoll(req.body);
-        res.status(201).json(poll)
+        res.status(201).json(poll);
     } catch (error) {
         res.status(400).json({ error: 'Create error' });
     }
 
 };
-
 
 export const update = catchAsyncErrors(async (req, res, next) => {
     let poll = await pollService.getPollById(req.params.id);
