@@ -9,22 +9,20 @@ export const get = async (req, res, next) => {
     if(!poll) {
         return res.status(404).json({ error: 'Not found'});
     }
-    res.status(200).json('Test fra /controllers/poll.js/get');
+    res.status(200).json(poll);
 };
 
 
 export const list = async (req, res, next) => {
     const result = await pollService.listPolls();
     console.log('Test fra /controller/poll.js/list - funker ved localhost:5000/polls')
-    res.status(200).json({result});
+    res.status(200).json(result);
 };
 
 
 export const create = async (req, res, next) => {
-
     try {
         console.log("Request Body i /controllers/poll.js/createmetode");
-        console.log(req.body);
         const poll = await pollService.createPoll(req.body);
         res.status(201).json(poll);
     } catch (error) {

@@ -39,7 +39,7 @@ const Polls = () => {
                 <Icon name="time" mr={2} />
                 {new Date(poll.createdAt).toDateString()}
               </Text>
-              <Text fontSize="lg">By: {poll.user.email}</Text>
+              <Text fontSize="lg">By: {poll.answer}</Text>
             </Box>
           ))}
       </Flex>
