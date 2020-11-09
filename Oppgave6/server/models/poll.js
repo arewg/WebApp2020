@@ -15,9 +15,9 @@ const PollSchema = new Schema(
         //slug: String, 
         answers: [{
             answer: String,
-            correct: {
-                type: Boolean,
-                default: false
+            votes: {
+                type: Number,
+                default: 0
             }
         }],
     },
