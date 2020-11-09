@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Flex, Text, Icon } from '@chakra-ui/core';
-import { list } from '../utils/pollService';
+import { list, updatePoll } from '../utils/pollService';
 
 const Polls = () => {
   const [polls, setPolls] = useState();
@@ -40,8 +40,26 @@ const Polls = () => {
   const handleSubmitAnswer = (e) => {
     console.log("Disse svarene skal være de som er krysset av nå");
     console.log(chosenAnswers);
-    setChosenAnswers([]);
-  }
+
+    
+    chosenAnswers.map((ans) => {
+      
+      const data = {
+      answers: [{
+          id: ans.id,
+          answer: ans,
+          votes: 12123
+      
+      }],
+    };
+
+    updatePoll(e.target.id, data)
+
+  })
+
+  chosenAnswers.map((ans) => removeAnswer(ans));
+    
+  };
 
   return (
     <section>
@@ -52,7 +70,7 @@ const Polls = () => {
       <Flex direction={"column"}>
         {polls &&
           polls.map((poll) => (
-            <Box p="6" as="article" key={poll.id}>
+            <Box p="6" as="article" key={poll._id}>
               <Heading mb={2} as="h2" size="sm">
                 {poll.question}
               </Heading>
@@ -60,19 +78,17 @@ const Polls = () => {
                 {poll.answers.map((answer) => (
                   <label key={answer._id}>
                     {answer.answer}
-                    <input id={answer.answer} type="checkbox" name="checkfield"  onChange={handleChecked}/>
+                    <input id={answer._id} type="checkbox" name="checkfield"  onChange={handleChecked}/>
                     <br></br>
                   </label>
-                ))
-                }
-
+                ))}
               </Text>
               <Text fontSize="lg" mb={2}>
                 <Icon name="time" mr={2} />
                 {new Date(poll.createdAt).toDateString()}
               </Text>
               <Text fontSize="lg">By: { }</Text>
-              <button onClick={handleSubmitAnswer}>VIS ALLE ANSWERS</button>
+              <button id={poll._id} onClick={handleSubmitAnswer}>VIS ALLE ANSWERS</button>
             </Box>
           ))}
       
