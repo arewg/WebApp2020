@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NoMatch from '../components/NoMatch';
 
 import MainLayout from '../layouts/MainLayout';
+import CreatePoll from '../pages/CreatePoll';
 import Polls from '../pages/Polls';
 
 const Routes = () => (
@@ -13,7 +14,7 @@ const Routes = () => (
           <Polls />
         </Route>
         <Route exact path="/createpoll">
-          <Polls />
+          <CreatePoll />
         </Route>
         <Route path="*">
           <NoMatch />

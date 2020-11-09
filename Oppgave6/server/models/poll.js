@@ -7,24 +7,28 @@ const PollSchema = new Schema(
     {
         question: {
             type: String,
-            requred: true,
+            required: true,
             trim: true,
             min: ['10', 'Spørsmålet må bestå av mer enn 10 tegn'],
             max: ['200', 'Spørsmålet må ha mindre enn 200 tegn'],
         },
-        slug: String, //Eventuell gjøre den til en index?
-        answer: {
-            type: String,
-            requred: true,
-        },
+        //slug: String, 
+        answers: [{
+            answer: String,
+            correct: {
+                type: Boolean,
+                default: false
+            }
+        }],
     },
-    { timestamps: true, toJSON: { virtuals: true}, toObject: { virtuals: true} }
+    { timestamps: true, toObject: { virtuals: true } }
 );
 
-PollSchema.pre('save', function (next) {
-    this.slug = slugify.apply(this.name, { lower: true });
-    next();
-});
+// PollSchema.pre('save', function (next) {
+//      this.slug = slugify.apply(this.get.question);
+//      next();
+//      });
 
+const Poll = mongoose.model('Poll', PollSchema);
 
-export default mongoose.model('Poll', PollSchema);
+export default Poll;

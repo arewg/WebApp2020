@@ -36,12 +36,11 @@ const Polls = () => {
     setChosenAnswers([...removed]);
   }
 
+  //Denne må også nullstille checkboxene eller gjøre at de ikke kan checkes pånytt
   const handleSubmitAnswer = (e) => {
     console.log("Disse svarene skal være de som er krysset av nå");
     console.log(chosenAnswers);
     setChosenAnswers([]);
-
-
   }
 
   return (
