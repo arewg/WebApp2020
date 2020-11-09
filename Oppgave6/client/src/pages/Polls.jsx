@@ -40,25 +40,19 @@ const Polls = () => {
   const handleSubmitAnswer = (e) => {
     console.log("Disse svarene skal være de som er krysset av nå");
     console.log(chosenAnswers);
-
     
     chosenAnswers.map((ans) => {
-      
+    
       const data = {
       answers: [{
           id: ans.id,
           answer: ans,
-          votes: 12123
-      
+          votes: 100
       }],
     };
-
     updatePoll(e.target.id, data)
-
   })
-
   chosenAnswers.map((ans) => removeAnswer(ans));
-    
   };
 
   return (
