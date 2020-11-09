@@ -12,6 +12,9 @@ const Routes = () => (
         <Route exact path="/">
           <Polls />
         </Route>
+        <Route exact path="/createpoll">
+          <Polls />
+        </Route>
         <Route path="*">
           <NoMatch />
         </Route>
