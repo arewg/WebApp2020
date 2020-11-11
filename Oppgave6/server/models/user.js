@@ -17,15 +17,7 @@ const UserSchema = new Schema(
       required: [true, 'Fyll ut passord'],
       minlength: [4, 'Passordet må minmum bestå av 8 verdier'],
       select: false,
-    },
-    role: {
-      type: String,
-      enum: {
-        values: ['user', 'admin'],
-        message: 'Rolle ikke fylt ut',
-      },
-      default: 'user',
-    },
+    }
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

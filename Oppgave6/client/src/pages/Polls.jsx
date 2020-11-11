@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Flex, Text, Icon } from '@chakra-ui/core';
+import { Box, Heading, Flex, Text, Icon, Button, Checkbox } from '@chakra-ui/core';
 import { list, updatePoll } from '../utils/pollService';
 
 const Polls = () => {
   const [polls, setPolls] = useState();
   const [error, setError] = useState(null);
+  //const [disabled, setDisabled] = useState(false);
 
   const [chosenAnswers, setChosenAnswers] = useState([]);
 
@@ -21,74 +22,71 @@ const Polls = () => {
     fetchData();
   }, []);
 
-  const handleChecked = (e) => {
-      chosenAnswers.map((ans) => {
-        if(ans === e.target.id) {
-          removeAnswer(e.target.id);
-          return;
+  const handleChecked = async (answer) => {
+    console.log("HANDLE CHECKED ANSWER: " + JSON.stringify(answer))
+    chosenAnswers.map((existingAnswer) => {
+       if(existingAnswer === answer) {
+        removeAnswer(answer);
+        return;
         }}, 
-      setChosenAnswers([e.target.id, ...chosenAnswers])) 
-      
-  }
+        setChosenAnswers([answer, ...chosenAnswers]))
+        }
   
-  const removeAnswer = (toRemove) => {
+  const removeAnswer = async (toRemove) => {
+    console.log("ANSWER THAT WAS UNCHECKED: " + JSON.stringify(toRemove))
     const removed = chosenAnswers.filter((a) => a !== toRemove);
     setChosenAnswers([...removed]);
+    console.log("AFTER DELETION: " + JSON.stringify(chosenAnswers))
   }
 
   //Denne må også nullstille checkboxene eller gjøre at de ikke kan checkes pånytt
-  const handleSubmitAnswer = (e) => {
-    console.log("Disse svarene skal være de som er krysset av nå");
-    console.log(chosenAnswers);
-
-    
+  const handleSubmitAnswer = async (e) => {
+    console.log("SIZE OF ANSWERARRAY: " + chosenAnswers.length)
+    console.log("HANDLE SUBMIT ANSWER: " + JSON.stringify(chosenAnswers))
+ 
     chosenAnswers.map((ans) => {
-      
-      const data = {
-      answers: [{
-          id: ans.id,
-          answer: ans,
-          votes: 12123
-      
-      }],
-    };
-
-    updatePoll(e.target.id, data)
-
+    updatePoll(e.target.id, ans)
   })
-
   chosenAnswers.map((ans) => removeAnswer(ans));
-    
+  //setDisabled(true); 
+  alert(`Votes for ${e.target.name} has been submitted`);
   };
 
   return (
     <section>
-      <Heading mb={2} as="h1" size="md">
-        Polls page
+      <Heading mb={10} as="h1" fontSize="xl">
+        Available Polls
       </Heading>
       {error && <p>{error}</p>}
       <Flex direction={"column"}>
         {polls &&
           polls.map((poll) => (
             <Box p="6" as="article" key={poll._id}>
-              <Heading mb={2} as="h2" size="sm">
+              <Heading mb={2} as="h2" size="md" color="#007b5f">
                 {poll.question}
               </Heading>
-              <Text fontSize="lg" mb={2}>
-                {poll.answers.map((answer) => (
-                  <label key={answer._id}>
-                    {answer.answer}
-                    <input id={answer._id} type="checkbox" name="checkfield"  onChange={handleChecked}/>
-                    <br></br>
-                  </label>
-                ))}
-              </Text>
-              <Text fontSize="lg" mb={2}>
-                <Icon name="time" mr={2} />
+              <div fontSize="md" mb={2}>
+              {poll.answers.map((answer) => {
+                  if(answer.answer !== null){
+                    return(
+                      <Flex key={answer._id}>
+                      <Text  width="200px"><Icon name="chevron-right" mr={2} />{answer.answer}</Text>
+                      <Checkbox name={"checkbox"} variantColor="gray" onChange={() => handleChecked(answer)}/>
+                      </Flex>
+                    )
+                  }})
+                }
+                </div>
+              <Text fontSize="sm" marginTop="10px" mb={2}>
                 {new Date(poll.createdAt).toDateString()}
               </Text>
-              <Text fontSize="lg">By: { }</Text>
-              <button id={poll._id} onClick={handleSubmitAnswer}>VIS ALLE ANSWERS</button>
+              <Text fontSize="lg"><Icon name="email" mr={2} />{poll.madeBy}</Text>
+              <Button marginTop="20px" 
+                _hover={{
+                    bg: "#007b5f",
+                    transform: "scale(1.06)",
+                    borderColor: "#000000",}} 
+                onClick={handleSubmitAnswer} id={poll._id} name={poll.question} ><Icon name="check" mr={2} />Submit Votes</Button>
             </Box>
           ))}
       

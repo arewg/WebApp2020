@@ -1,6 +1,7 @@
 import { pollService } from '../services/index.js';
 import catchAsyncErrors from '../middleware/catchAsync.js';
 import ErrorHandler from '../utils/errorHandler.js';
+import Poll from '../models/poll.js'
 
 
 export const get = async (req, res, next) => {
@@ -32,14 +33,28 @@ export const create = async (req, res, next) => {
 };
 
 export const update = catchAsyncErrors(async (req, res, next) => {
-    let poll = await pollService.getPollById(req.params.id);
-    if (!poll) {
-      return next(
-        new ErrorHandler(`Finner ikke poll med ${req.params.id} ved update i controllers/poll.js`, 404)
-      );
-    }
-    poll = await pollService.updatePoll(req.params.id, req.body);
-    res.status(200).json(poll);
+  
+  const { id } = req.params;
+
+const answereIds = req.body;
+
+let poll = await Poll.findById(id);
+
+if (!poll && !Array.isArray(answereIds)) {
+return res.status(404).json({});
+}
+
+poll.answers.map((answer) => {
+if (answereIds._id.includes(answer.id.toString())) {
+
+answer.votes += 1;
+}
+});
+
+poll.save();
+poll = await pollService.updatePoll(id, answereIds);
+res.status(200).json(poll);
+
   });
 
 

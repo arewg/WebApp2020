@@ -1,6 +1,6 @@
 import http from './http';
 
-const API_URL = '/polls';
+const API_URL = '/users';
 
 export const list = async () => {
   try {
@@ -26,17 +26,9 @@ export const create = async (data) => {
   }
 };
 
-export const updatePoll = async (id, data) => {
-  try {
-    return await http.put(`${API_URL}/${id}`, data);
-  } catch (err) {
-    return err.response.data;
-  }
-};
 
 export default {
   create,
   list,
   get,
-  updatePoll,
 };

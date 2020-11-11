@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import { Box, Heading, Flex, Text, Icon } from '@chakra-ui/core';
+import { Input, Button, FormControl, Heading } from '@chakra-ui/core';
 import { create } from "../utils/pollService";
 
 const CreatePoll = () => {
 
     const [answerValue, setAnswerValue] = useState(null);
+    const [answerValue2, setAnswerValue2] = useState(null);
+    const [answerValue3, setAnswerValue3] = useState(null);
+    const [answerValue4, setAnswerValue4] = useState(null);
+    
     const [questionValue, setQuestionValue] = useState(null);
-
     const [correct, setCorrect] = useState(false);
 
     const handleAnswerChange = (e) => {
         setAnswerValue(e.target.value);
-        console.log("HEIHEIOHI")
+    }
+    const handleAnswerChange2 = (e) => {
+        setAnswerValue2(e.target.value);
+    }
+    const handleAnswerChange3 = (e) => {
+        setAnswerValue3(e.target.value);
+    }
+    const handleAnswerChange4 = (e) => {
+        setAnswerValue4(e.target.value);
     }
 
     const handleQuestionChange = (e) => {
         setQuestionValue(e.target.value);
-    }
-
-    const handleTrue = () => {
-        setCorrect(!correct);
     }
 
     const handleSubmit = (e) => {
@@ -28,10 +35,12 @@ const CreatePoll = () => {
 
         const data = {
             question: questionValue,
-            answers: [{
-                answer: answerValue,
-                correct: !correct
-            }],
+            answers: [
+                {answer: answerValue},
+                {answer: answerValue2},
+                {answer: answerValue3}, 
+                {answer: answerValue4},
+            ],
           };
 
         const createData = async () => {
@@ -41,14 +50,24 @@ const CreatePoll = () => {
     }
 
     return (
-        <div>
-            <form>
-                <input defaultValue="Question" type="text" onChange={handleQuestionChange} />
-                <input defaultValue="Answer here" type="text" onChange={handleAnswerChange} />
-                <button onClick={handleSubmit}>Post</button>
-              
-            </form>
-            <button onClick={handleTrue}> Set {correct.toString()}</button>
+        <div><Heading mb={10} as="h1" fontSize="xl">
+        Create Poll
+      </Heading>
+            <FormControl marginLeft="20px" width="350px">
+                    <Input size="md" focusBorderColor="#007b5f" autoFocus={true} placeholder="Question" type="text" onChange={handleQuestionChange} />
+                    <Input marginTop="10px" size="md" focusBorderColor="#007b5f" placeholder="Answer" type="text" onChange={handleAnswerChange} />
+                    <Input marginTop="10px" size="md" focusBorderColor="#007b5f" placeholder="Answer" type="text" onChange={handleAnswerChange2} />
+                    <Input marginTop="10px" size="md" focusBorderColor="#007b5f" placeholder="Answer" type="text" onChange={handleAnswerChange3} />
+                    <Input size="md" marginTop="10px" focusBorderColor="#007b5f" placeholder="Answer" type="text" onChange={handleAnswerChange4} />
+            </FormControl>
+            <Button 
+                marginTop="20px" 
+                marginLeft="20px" 
+                _hover={{
+                    bg: "#007b5f",
+                    transform: "scale(1.07)"}} 
+                onClick={handleSubmit}>Submit</Button>     
+    
         </div>
     )
 }
