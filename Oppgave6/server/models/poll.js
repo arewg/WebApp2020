@@ -12,7 +12,9 @@ const PollSchema = new Schema(
             min: ['10', 'Spørsmålet må bestå av mer enn 10 tegn'],
             max: ['200', 'Spørsmålet må ha mindre enn 200 tegn'],
         },
-        //slug: String, 
+        user: {
+            type: String
+        },
         answers: [{
             answer: String,
             votes: {
@@ -21,13 +23,9 @@ const PollSchema = new Schema(
             }
         }],
     },
-    { timestamps: true, toObject: { virtuals: true } }
+    { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-// PollSchema.pre('save', function (next) {
-//      this.slug = slugify.apply(this.get.question);
-//      next();
-//      });
 
 const Poll = mongoose.model('Poll', PollSchema);
 

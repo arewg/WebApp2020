@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Heading, Input, Button, FormControl, FormLabel, FormHelperText } from '@chakra-ui/core';
 import { create } from "../utils/userService.js";
+import { UserContext } from '../contexts/UserProvider.jsx';
+
 
 const CreateUser = () => {
-
+    const { updateState } = useContext(UserContext)
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
@@ -17,7 +19,6 @@ const CreateUser = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //const data = "{\"question\": "+`${questionValue},\n`+"\"answer\": " +`${answerValue}}`;
 
         const data = {
             email: email,
@@ -26,10 +27,14 @@ const CreateUser = () => {
 
         const createData = async () => {
             await create(data);
-            }
-            createData();
+        }
+        
+        createData();
+        console.log("DATA.EMAIL " + data.email)
+        updateState(data.email)
+        alert("Din bruker er opprettet")   
+        
 
-        alert("Din bruker er opprettet");    
     }
 
     return (

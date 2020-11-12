@@ -80,7 +80,7 @@ const Polls = () => {
               <Text fontSize="sm" marginTop="10px" mb={2}>
                 {new Date(poll.createdAt).toDateString()}
               </Text>
-              <Text fontSize="lg"><Icon name="email" mr={2} />{poll.madeBy}</Text>
+              <Text  width="200px"><Icon name="email" mr={2} />{poll.user ? poll.user : "Anonymous" }</Text>
               <Button marginTop="20px" 
                 _hover={{
                     bg: "#007b5f",

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Input, Button, FormControl, Heading } from '@chakra-ui/core';
 import { create } from "../utils/pollService";
+import { UserContext } from '../contexts/UserProvider';
 
 const CreatePoll = () => {
+    const derp = useContext(UserContext);
 
     const [answerValue, setAnswerValue] = useState(null);
     const [answerValue2, setAnswerValue2] = useState(null);
@@ -10,8 +12,7 @@ const CreatePoll = () => {
     const [answerValue4, setAnswerValue4] = useState(null);
     
     const [questionValue, setQuestionValue] = useState(null);
-    const [correct, setCorrect] = useState(false);
-
+    
     const handleAnswerChange = (e) => {
         setAnswerValue(e.target.value);
     }
@@ -33,8 +34,11 @@ const CreatePoll = () => {
         e.preventDefault();
         //const data = "{\"question\": "+`${questionValue},\n`+"\"answer\": " +`${answerValue}}`;
 
+        console.log("DETTE ER STATE FOR USER     : " + derp.state)
+
         const data = {
             question: questionValue,
+            user : derp.state,
             answers: [
                 {answer: answerValue},
                 {answer: answerValue2},

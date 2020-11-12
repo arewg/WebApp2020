@@ -27,12 +27,12 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-UserSchema.virtual('polls', {
-  ref: 'Poll',
-  localField: '_id',
-  foreignField: 'user',
-  justOne: false,
-});
+// UserSchema.virtual('polls', {
+//   ref: 'Poll',
+//   localField: 'email',
+//   foreignField: 'user',
+//   justOne: false,
+// });
 
 const User = mongoose.model('User', UserSchema);
 
