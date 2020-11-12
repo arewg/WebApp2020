@@ -2,7 +2,7 @@ import Poll from '../models/poll.js';
 
 export const getPollById = async (id) => Poll.findById(id);
 
-export const listPolls = async () => Poll.find().populate('user', 'email');
+export const listPolls = async () => Poll.find();
 
 export const createPoll = async (data) => Poll.create(data);
 
@@ -10,7 +10,7 @@ export const updatePoll = async (id, data) =>
   Poll.findByIdAndUpdate(id, data, {
     new: true,
     runValidators: true,
-    useFindAndModify: false,
+    useFindAndModify: true,
   });
 
 export const removePoll = async (id) => {
