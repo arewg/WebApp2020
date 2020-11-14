@@ -5,8 +5,6 @@ import { list, updatePoll } from '../utils/pollService';
 const Polls = () => {
   const [polls, setPolls] = useState();
   const [error, setError] = useState(null);
-  //const [disabled, setDisabled] = useState(false);
-
   const [chosenAnswers, setChosenAnswers] = useState([]);
 
   useEffect(() => {
@@ -23,7 +21,6 @@ const Polls = () => {
   }, []);
 
   const handleChecked = async (answer) => {
-    console.log("HANDLE CHECKED ANSWER: " + JSON.stringify(answer))
     chosenAnswers.map((existingAnswer) => {
        if(existingAnswer === answer) {
         removeAnswer(answer);
@@ -33,24 +30,18 @@ const Polls = () => {
         }
   
   const removeAnswer = async (toRemove) => {
-    console.log("ANSWER THAT WAS UNCHECKED: " + JSON.stringify(toRemove))
     const removed = chosenAnswers.filter((a) => a !== toRemove);
     setChosenAnswers([...removed]);
-    console.log("AFTER DELETION: " + JSON.stringify(chosenAnswers))
   }
 
   //Denne må også nullstille checkboxene eller gjøre at de ikke kan checkes pånytt
   const handleSubmitAnswer = async (e) => {
-    console.log("SIZE OF ANSWERARRAY: " + chosenAnswers.length)
-    console.log("HANDLE SUBMIT ANSWER: " + JSON.stringify(chosenAnswers))
- 
     chosenAnswers.map((ans) => {
     updatePoll(e.target.id, ans)
-  })
+    })
   chosenAnswers.map((ans) => removeAnswer(ans));
-  //setDisabled(true); 
   alert(`Votes for ${e.target.name} has been submitted`);
-  };
+  }; 
 
   return (
     <section>

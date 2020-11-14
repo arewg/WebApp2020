@@ -38,8 +38,6 @@ const server = app.listen(
 
 process.on('unhandledRejection', (err) => {
     console.log(`Error: ${err.message}`);
-    console.log(`Shutting down server due to Unhandled Promise Rejection`);
-    console.log(`Jeg er i server.js`)
     server.close(() => {
         process.exit(1);
     });

@@ -32,9 +32,6 @@ const CreatePoll = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //const data = "{\"question\": "+`${questionValue},\n`+"\"answer\": " +`${answerValue}}`;
-
-        console.log("DETTE ER STATE FOR USER     : " + derp.state)
 
         const data = {
             question: questionValue,
@@ -71,7 +68,6 @@ const CreatePoll = () => {
                     bg: "#007b5f",
                     transform: "scale(1.07)"}} 
                 onClick={handleSubmit}>Submit</Button>     
-    
         </div>
     )
 }

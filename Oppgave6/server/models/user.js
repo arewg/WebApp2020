@@ -27,13 +27,6 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-// UserSchema.virtual('polls', {
-//   ref: 'Poll',
-//   localField: 'email',
-//   foreignField: 'user',
-//   justOne: false,
-// });
-
 const User = mongoose.model('User', UserSchema);
 
 export default User;

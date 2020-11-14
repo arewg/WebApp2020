@@ -30,11 +30,8 @@ const CreateUser = () => {
         }
         
         createData();
-        console.log("DATA.EMAIL " + data.email)
         updateState(data.email)
         alert("Din bruker er opprettet")   
-        
-
     }
 
     return (

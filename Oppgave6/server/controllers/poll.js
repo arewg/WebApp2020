@@ -16,14 +16,12 @@ export const get = async (req, res, next) => {
 
 export const list = async (req, res, next) => {
     const result = await pollService.listPolls();
-    console.log('Test fra /controller/poll.js/list - funker ved localhost:5000/polls')
     res.status(200).json(result);
 };
 
 
 export const create = async (req, res, next) => {
     try {
-        console.log("Request Body i /controllers/poll.js/createmetode");
         const poll = await pollService.createPoll(req.body);
         res.status(201).json(poll);
     } catch (error) {
@@ -33,29 +31,23 @@ export const create = async (req, res, next) => {
 };
 
 export const update = catchAsyncErrors(async (req, res, next) => {
-  
   const { id } = req.params;
+  const answereIds = req.body;
+  let poll = await Poll.findById(id);
 
-const answereIds = req.body;
+  if (!poll && !Array.isArray(answereIds)) {
+    return res.status(404).json({});
+  }
 
-let poll = await Poll.findById(id);
+  poll.answers.map((answer) => {
+    if (answereIds._id.includes(answer.id.toString())) {
+      answer.votes += 1;
+  }});
 
-if (!poll && !Array.isArray(answereIds)) {
-return res.status(404).json({});
-}
-
-poll.answers.map((answer) => {
-if (answereIds._id.includes(answer.id.toString())) {
-
-answer.votes += 1;
-}
+  poll.save();
+  poll = await pollService.updatePoll(id, answereIds);
+  res.status(200).json(poll);
 });
-
-poll.save();
-poll = await pollService.updatePoll(id, answereIds);
-res.status(200).json(poll);
-
-  });
 
 
 export const remove = catchAsyncErrors(async (req, res, next) => {

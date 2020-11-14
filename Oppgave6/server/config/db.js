@@ -12,7 +12,7 @@ const connectDatabase = async () => {
         console.log(error.message);
     }
 
-    console.log(`Connected to mongodb ${dbCon.connection.host}. MSG from server/config/db.js`)
+    console.log(`Connected to mongodb ${dbCon.connection.host}.`)
 };
 
 export default connectDatabase;
