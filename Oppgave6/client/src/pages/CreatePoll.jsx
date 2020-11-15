@@ -4,7 +4,7 @@ import { create } from "../utils/pollService";
 import { UserContext } from '../contexts/UserProvider';
 
 const CreatePoll = () => {
-    const derp = useContext(UserContext);
+    const globalUser = useContext(UserContext);
 
     const [answerValue, setAnswerValue] = useState(null);
     const [answerValue2, setAnswerValue2] = useState(null);
@@ -35,7 +35,7 @@ const CreatePoll = () => {
 
         const data = {
             question: questionValue,
-            user : derp.state,
+            user : globalUser.state,
             answers: [
                 {answer: answerValue},
                 {answer: answerValue2},
@@ -48,6 +48,7 @@ const CreatePoll = () => {
             await create(data);
             }
             createData();
+            alert("Poll created");
     }
 
     return (
